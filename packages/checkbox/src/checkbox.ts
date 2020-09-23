@@ -134,6 +134,8 @@ export default class OrxeCheckbox extends TranslationClass {
       this.checkBoxItem.isChecked = !this.checkBoxItem.isChecked;
       if (!this.checkBoxItem.isChecked && this.checkBoxItem.isRequired) { 
         this.errorMessage = 'You will have to select the checkbox';
+      }else{
+        this.errorMessage ='';
       }
     }
   }
