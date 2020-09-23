@@ -22,6 +22,7 @@ export default class OrxeCheckbox extends TranslationClass {
     isChecked: true,
     isDisabled: false,
     state: 'active',
+    isRequired: false,
     key: 'key_2',
     metaData: {
 
@@ -129,6 +130,11 @@ export default class OrxeCheckbox extends TranslationClass {
         }
       });
       this.checkErrorMessage();
+    } else {
+      this.checkBoxItem.isChecked = !this.checkBoxItem.isChecked;
+      if (!this.checkBoxItem.isChecked && this.checkBoxItem.isRequired) { 
+        this.errorMessage = 'You will have to select the checkbox';
+      }
     }
   }
 
