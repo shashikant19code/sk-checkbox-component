@@ -57,7 +57,7 @@ export default class OrxeCheckbox extends TranslationClass {
   }
 
   @property({ type: String })
-  errorMessage = ' ';
+  errorMessage = '';
 
   /**
    *
@@ -70,10 +70,6 @@ export default class OrxeCheckbox extends TranslationClass {
   constructor() {
     super();
   }
-
-  // public connectedCallback() {
-  //   this.checkErrorMessage();
-  // }
 
   render() {
     return html`
@@ -90,7 +86,7 @@ export default class OrxeCheckbox extends TranslationClass {
         return check.isChecked;
       });
       if (checkedCheckBox) {
-        this.errorMessage = ' ';
+        this.errorMessage = '';
       } else {
         this.errorMessage = 'Please check one of the checkbox';
       }
@@ -114,11 +110,15 @@ export default class OrxeCheckbox extends TranslationClass {
             <div class="checkbox-container">
             <div>
             <label class="main"><input type="checkbox" id="${checkbox.key}" @change="${() => { this.checkUncheckBox(checkbox) }}" ?disabled=${checkbox.isDisabled} ?checked=${checkbox.isChecked}><span for="${checkbox.key}" 
-             class="checkbox ${this.getClassByState(checkbox)}"></span><span class=
+             class="checkbox ${this.getClassByState(checkbox)} ${this.getClass()}"></span><span class=
             "checkbox-label-name">${checkbox.label}</span></label>
             </div>
             ${this.getMetaData(checkbox)}
             </div>`
+  }
+
+  public getClass() {
+    return this.errorMessage ? 'error-message-border' : ''
   }
 
   public checkUncheckBox(checkbox) {
