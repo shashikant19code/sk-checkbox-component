@@ -1,0 +1,10 @@
+{
+    "libraryVersion": "0.0.1",
+    "project": {
+      "projectName": "%projectName%",
+      "projectType": "litelement",
+      "root": "",
+      "sourceRoot": "packages",
+      "prefix": "orxe"
+    }
+  }

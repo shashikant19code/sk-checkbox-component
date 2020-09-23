@@ -1,0 +1,10 @@
+:host{
+    --checkbox-font-family: var(--primary-font-family);
+    --checkbox-font-color: var(--secondary-text);
+    --metadata-font-family: var(--primary-font-family);
+    --metadata-font-color: var(--tertiary-text);
+    --metadata-font-weight: var(--font-weight-regular);
+    --checkbox-background-color: var(--secondary);
+    --checkbox-border-color: var(--secondary-text);
+}
+$checkbox-container-font-size: 1.4rem;

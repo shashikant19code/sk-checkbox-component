@@ -1,0 +1,69 @@
+@import "./checkbox-map.scss";
+
+.checkbox-parent-container {
+  width: 100%;
+}
+.checkbox-container {
+  font-family: var(--checkbox-font-family);
+  display: flex;
+  min-height: 48px;
+  justify-content: space-between;
+  font-size: $checkbox-container-font-size;
+  color: var(--checkbox-font-color);
+}
+.main {
+  display: block;
+  position: relative;
+  padding-left: 8px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.checkbox {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1.2px solid var(--checkbox-border-color);
+  width: 20px;
+}
+
+.checkbox-label-name {
+  text-align: justify;
+  word-break: break-all;
+}
+input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.main input:checked ~ .checkbox {
+  background-color: var(--checkbox-background-color);
+}
+
+.checkbox:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.main input:checked ~ .checkbox:after {
+  display: block;
+}
+
+.main .checkbox:after {
+  left: 6px;
+  bottom: 4px;
+  width: 4px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.metadata-value {
+  color: var(--metadata-font-color);
+  font-family: var(--metadata-font-family);
+}

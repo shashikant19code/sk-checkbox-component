@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
+
+  <title>Orxe3 Components</title>
+
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="https://components.qa.cnxloyalty.com/theme/css/imports.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.3.0/custom-elements-es5-adapter.js"></script>
+  <script>
+    function initializeData() {
+        var checkBoxItem =
+        {
+          label: 'Checkbox Name',
+          isChecked: true,
+          isDisabled: false,
+          state: 'active',
+          metaData: {
+
+          }
+        }
+
+        document.getElementById('checkbox').checkBoxItem = checkBoxItem;
+
+      var checkBoxItems = [
+        {
+          label: 'Checkbox Name',
+          isChecked: true,
+          isDisabled: false,
+          state: 'active',
+          key: 'key_2',
+          metaData: {
+
+          }
+        },
+        {
+          label: 'Checkbox Name',
+          isChecked: true,
+          isDisabled: false,
+          state: 'error',
+          key: 'key_3',
+          metaData: {
+            value: 550
+          },
+        },
+        {
+          label: 'Checkbox Name',
+          isChecked: true,
+          isDisabled: true,
+          state: 'error',
+          key: 'key_4',
+          metaData: {
+            value: 550
+          },
+        }
+      ];
+
+      document.getElementById('checkboxGroup').checkBoxItems = checkBoxItems;
+    }
+    </script>
+</head>
+
+<body onload="initializeData()">
+  <style>
+    body {
+      background-color: #ccc;
+    }
+
+    .conatainer {
+      width: 40%;
+      background-color: white;
+      padding: 16px;
+      margin-bottom: 15px;
+    }
+  </style>
+
+  <h4>Checkbox</h4>
+  <br /><br />
+  <div class="conatainer">
+    <orxe-checkbox></orxe-checkbox>
+  </div>
+  <div class="conatainer"> 
+    <orxe-checkbox id="checkboxGroup" checkboxType="checkboxGroup" checkBoxItems=checkBoxItems>
+    </orxe-checkbox>
+  </div>
+  <h2>Single Checkbox</h2>
+  <div class="conatainer"> 
+    <orxe-checkbox id="checkbox" checkboxType="checkbox" checkBoxItem=checkBoxItem>
+    </orxe-checkbox>
+  </div>
+</body>
+
+</html>
