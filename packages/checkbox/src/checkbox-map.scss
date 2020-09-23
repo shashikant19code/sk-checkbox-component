@@ -5,6 +5,11 @@
     --metadata-font-color: var(--tertiary-text);
     --metadata-font-weight: var(--font-weight-regular);
     --checkbox-background-color: var(--secondary);
+    --checkbox-disabled-background-color: var(--disabled-text);
     --checkbox-border-color: var(--secondary-text);
+    --error-message-color: var(--error-text);
+    --error-message-font-family: var(--primary-font-family);
+    --error-message-font-weight:var(--font-weight-semi-bold)
 }
+$error-message-font-size: 1.2rem;
 $checkbox-container-font-size: 1.4rem;

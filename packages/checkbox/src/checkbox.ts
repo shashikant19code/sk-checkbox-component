@@ -13,44 +13,50 @@ import '@orxe-components/button';
  */
 @customElement('orxe-checkbox')
 export default class OrxeCheckbox extends TranslationClass {
-    @property({ type: String, reflect: true })
-    checkboxType = 'checkbox';
+  @property({ type: String, reflect: true })
+  checkboxType = 'checkbox';
 
-    @property({ type: Object, reflect: true })
-    checkBoxItem = {
-         label: 'Checkbox Name',
-         isChecked: true,
-         isDisabled: false,
-         state: 'active',
-         key: 'key_2',
-         metaData: {
+  @property({ type: Object, reflect: true })
+  checkBoxItem = {
+    label: 'Checkbox Name',
+    isChecked: true,
+    isDisabled: false,
+    state: 'active',
+    key: 'key_2',
+    metaData: {
 
-         }
-    };
+    }
+  };
 
-    @property({ type: Object, reflect: true })
-    checkBoxItems = [        
-        {
-          label: 'Checkbox Name',
-          isChecked: false,
-          isDisabled: false,
-          state: 'error',
-          key: 'key_3',
-          metaData: {
-            value: 550
-          },
+  @property({ type: Object, reflect: true })
+  checkBoxGroup = {
+    isRequired: true,
+    checkBoxItems: [
+      {
+        label: 'Checkbox Name',
+        isChecked: false,
+        isDisabled: false,
+        state: 'error',
+        key: 'key_3',
+        metaData: {
+          value: 550
         },
-        {
-          label: 'Checkbox Name',
-          isChecked: false,
-          isDisabled: false,
-          state: 'error',
-          key: 'key_4',
-          metaData: {
-            value: 550
-          },
-        }
-      ];
+      },
+      {
+        label: 'Checkbox Name',
+        isChecked: false,
+        isDisabled: false,
+        state: 'error',
+        key: 'key_4',
+        metaData: {
+          value: 550
+        },
+      }
+    ]
+  }
+
+  @property({ type: String })
+  errorMessage = ' ';
 
   /**
    *
@@ -64,22 +70,39 @@ export default class OrxeCheckbox extends TranslationClass {
     super();
   }
 
+  // public connectedCallback() {
+  //   this.checkErrorMessage();
+  // }
+
   render() {
     return html`
     <div class="checkbox-parent-container">
           ${this.getCheckbox()}
+          <div class="error-message">${this.errorMessage}</div>
     </div>
     `;
+  }
+
+  public checkErrorMessage() {
+    if (this.checkboxType == 'checkboxGroup' && this.checkBoxGroup.isRequired) {
+      let checkedCheckBox = this.checkBoxGroup.checkBoxItems.find(check => {
+        return check.isChecked;
+      });
+      if (checkedCheckBox) {
+        this.errorMessage = ' ';
+      } else {
+        this.errorMessage = 'Please check one of the checkbox';
+      }
+    }
   }
 
   public getCheckbox() {
     let template;
     if (this.checkboxType === 'checkbox') {
-        console.log('this.checkBoxItem: ', this.checkBoxItem);
       template = this.getTemplateForCheckBox(this.checkBoxItem)
     } else if (this.checkboxType === 'checkboxGroup') {
-      return this.checkBoxItems.map(checkbox => {
-         return this.getTemplateForCheckBox(checkbox);
+      return this.checkBoxGroup.checkBoxItems.map(checkbox => {
+        return this.getTemplateForCheckBox(checkbox);
       });
     }
     return template;
@@ -89,19 +112,32 @@ export default class OrxeCheckbox extends TranslationClass {
     return html`
             <div class="checkbox-container">
             <div>
-            <label class="main"><input type="checkbox" id="${checkbox.key}" ?disabled=${checkbox.isDisabled} ?checked=${checkbox.isChecked}><span for="${checkbox.key}" class="checkbox"></span><span class=
+            <label class="main"><input type="checkbox" id="${checkbox.key}" @change="${() => { this.checkUncheckBox(checkbox) }}" ?disabled=${checkbox.isDisabled} ?checked=${checkbox.isChecked}><span for="${checkbox.key}" 
+             class="checkbox ${this.getClassByState(checkbox)}"></span><span class=
             "checkbox-label-name">${checkbox.label}</span></label>
             </div>
             ${this.getMetaData(checkbox)}
             </div>`
   }
 
+  public checkUncheckBox(checkbox) {
+    if (this.checkboxType == 'checkboxGroup') {
+      this.checkBoxGroup.checkBoxItems.map(check => {
+        if (checkbox.key === check.key) {
+          check.isChecked = !check.isChecked;
+          return check;
+        }
+      });
+      this.checkErrorMessage();
+    }
+  }
+
 
   /**
    * getStateOfCheckBox: Get checkbox according to state of checkbox
    */
-  public getStateOfCheckBox(checkbox) {
-    return checkbox && checkbox.state == 'active' ? '1.2px solid #0A57A1' : '1.2px solid red';
+  public getClassByState(checkbox) {
+    return checkbox && checkbox.state == 'active' ? 'active' : 'disabled';
   }
 
   public getMetaData(checkbox) {

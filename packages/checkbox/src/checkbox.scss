@@ -29,9 +29,17 @@
   width: 20px;
 }
 
+.error-message{
+  font-family: var(--error-message-font-family);
+  font-size: $error-message-font-size;
+  font-weight: var(--error-message-font-weight);
+  color: var(--error-message-color);
+}
+
+
 .checkbox-label-name {
   text-align: justify;
-  word-break: break-all;
+  word-break: break-word;
 }
 input[type="checkbox"] {
   visibility: hidden;
@@ -41,6 +49,10 @@ input[type="checkbox"] {
   background-color: var(--checkbox-background-color);
 }
 
+.main input:checked ~ .disabled {
+  background-color: var(--checkbox-disabled-background-color);
+  border: 1.2px solid var(--checkbox-disabled-background-color);
+}
 .checkbox:after {
   content: "";
   position: absolute;

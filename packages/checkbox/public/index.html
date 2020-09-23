@@ -13,55 +13,108 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.3.0/custom-elements-es5-adapter.js"></script>
   <script>
     function initializeData() {
-        var checkBoxItem =
-        {
-          label: 'Checkbox Name',
-          isChecked: true,
-          isDisabled: false,
-          state: 'active',
-          metaData: {
+      var checkBoxItem =
+      {
+        label: 'Checkbox Name',
+        isChecked: true,
+        isDisabled: true,
+        state: 'disabled',
+        metaData: {
 
-          }
         }
+      }
 
-        document.getElementById('checkbox').checkBoxItem = checkBoxItem;
+      document.getElementById('checkbox').checkBoxItem = checkBoxItem;
 
-      var checkBoxItems = [
-        {
-          label: 'Checkbox Name',
-          isChecked: true,
-          isDisabled: false,
-          state: 'active',
-          key: 'key_2',
-          metaData: {
+      var termCheckBoxItem =
+      {
+        label: 'By checking this box and clicking complete booking. 1) I aknowledge that I have read all the terms and conditions of this transaction. And I confirm the name mentioned above match with the government issued IDs',
+        isChecked: false,
+        isDisabled: false,
+        state: 'active',
+        metaData: {
 
-          }
-        },
-        {
-          label: 'Checkbox Name',
-          isChecked: true,
-          isDisabled: false,
-          state: 'error',
-          key: 'key_3',
-          metaData: {
-            value: 550
-          },
-        },
-        {
-          label: 'Checkbox Name',
-          isChecked: true,
-          isDisabled: true,
-          state: 'error',
-          key: 'key_4',
-          metaData: {
-            value: 550
-          },
         }
-      ];
+      }
 
-      document.getElementById('checkboxGroup').checkBoxItems = checkBoxItems;
+      document.getElementById('term-checkbox').checkBoxItem = termCheckBoxItem;
+      var checkBoxGroup = {
+        checkBoxItems: [
+          {
+            label: 'Checkbox Name 1',
+            isChecked: true,
+            isDisabled: false,
+            state: 'active',
+            key: 'key_2',
+            metaData: {
+
+            }
+          },
+          {
+            label: 'Checkbox Name',
+            isChecked: false,
+            isDisabled: true,
+            state: 'disabled',
+            key: 'key_3',
+            metaData: {
+              value: 550
+            },
+          },
+          {
+            label: 'Checkbox Name',
+            isChecked: true,
+            isDisabled: true,
+            state: 'disabled',
+            key: 'key_4',
+            metaData: {
+              value: 550
+            },
+          }
+        ],
+        isRequired: true
+      }
+
+      document.getElementById('checkboxGroup').checkBoxGroup = checkBoxGroup;
+
+      var errorCheckBoxGroup = {
+        checkBoxItems: [
+          {
+            label: 'Checkbox Name 1',
+            isChecked: true,
+            isDisabled: false,
+            state: 'active',
+            key: 'key_2',
+            metaData: {
+
+            }
+          },
+          {
+            label: 'Checkbox Name',
+            isChecked: false,
+            isDisabled: false,
+            state: 'active',
+            key: 'key_3',
+            metaData: {
+              value: 550
+            },
+          },
+          {
+            label: 'Checkbox Name',
+            isChecked: true,
+            isDisabled: false,
+            state: 'active',
+            key: 'key_4',
+            metaData: {
+              value: 550
+            },
+          }
+        ],
+        isRequired: true
+      }
+
+      document.getElementById('error-checkboxGroup').checkBoxGroup = errorCheckBoxGroup;
     }
-    </script>
+  </script>
 </head>
 
 <body onload="initializeData()">
@@ -78,18 +131,32 @@
     }
   </style>
 
-  <h4>Checkbox</h4>
+  <h1>Checkbox</h1>
   <br /><br />
+  <h2>Single checkbox Selected/Unselected</h2>
   <div class="conatainer">
     <orxe-checkbox></orxe-checkbox>
   </div>
-  <div class="conatainer"> 
-    <orxe-checkbox id="checkboxGroup" checkboxType="checkboxGroup" checkBoxItems=checkBoxItems>
+  <h2>Checkbox Group with Selected/Unselected</h2>
+  <div class="conatainer">
+    <orxe-checkbox id="checkboxGroup" checkboxType="checkboxGroup" checkBoxGroup=checkBoxGroup>
     </orxe-checkbox>
   </div>
-  <h2>Single Checkbox</h2>
-  <div class="conatainer"> 
+  <h2>Default checked and disabled</h2>
+  <div class="conatainer">
     <orxe-checkbox id="checkbox" checkboxType="checkbox" checkBoxItem=checkBoxItem>
+    </orxe-checkbox>
+  </div>
+
+  <h2>Terms and policy checkbox with large content</h2>
+  <div class="conatainer">
+    <orxe-checkbox id="term-checkbox" checkboxType="checkbox" checkBoxItem=termCheckBoxItem>
+    </orxe-checkbox>
+  </div>
+
+  <h2>Checkbox group with error message for at least one selection mandatory</h2>
+  <div class="conatainer">
+    <orxe-checkbox id="error-checkboxGroup" checkboxType="checkboxGroup" checkBoxGroup=errorCheckBoxGroup>
     </orxe-checkbox>
   </div>
 </body>
