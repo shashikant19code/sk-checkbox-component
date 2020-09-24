@@ -65,7 +65,7 @@ export default class OrxeCheckbox extends TranslationClass {
 
   render() {
     return html`
-    <div class="checkbox-parent-container">
+    <div data-testid="container" class="checkbox-parent-container">
           ${this.getCheckbox()}
           <div class="error-message">${this.errorMessage}</div>
     </div>
@@ -77,6 +77,7 @@ export default class OrxeCheckbox extends TranslationClass {
       let checkedCheckBox = this.checkBoxGroup.checkBoxItems.find(check => {
         return check.isChecked;
       });
+      console.log(checkedCheckBox);
       if (checkedCheckBox) {
         this.errorMessage = '';
       } else {
@@ -102,7 +103,7 @@ export default class OrxeCheckbox extends TranslationClass {
             <div class="checkbox-container">
             <div>
             <label class="main">
-                <input type="checkbox" id="${checkbox.key}" @change="${() => { this.checkUncheckBox(checkbox) }}" ?disabled=${checkbox.isDisabled} ?checked=${checkbox.isChecked}>
+                <input data-testid="container" type="checkbox" id="${checkbox.key}" @change="${() => { this.checkUncheckBox(checkbox) }}" ?disabled=${checkbox.isDisabled} ?checked=${checkbox.isChecked}>
                 <span for="${checkbox.key}" class="checkbox ${this.getClassByState(checkbox)} ${this.getClass()}"></span>
                 <span class="checkbox-label-name">${checkbox.label}</span>
             </label>
@@ -125,8 +126,8 @@ export default class OrxeCheckbox extends TranslationClass {
       });
       this.checkErrorMessage();
     } else {
-      this.checkBoxItem.isChecked = !this.checkBoxItem.isChecked;
-      if (!this.checkBoxItem.isChecked && this.checkBoxItem.isRequired) { 
+      checkbox.isChecked = !checkbox.isChecked;
+      if (!checkbox.isChecked && checkbox.isRequired) { 
         this.errorMessage = 'You will have to select the checkbox';
       }else{
         this.errorMessage ='';
