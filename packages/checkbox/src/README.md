@@ -1,6 +1,8 @@
 # orxe-checkbox
 
-Cards define the visual boundary which should hold the specified set of information. Cards in ORXe 3 are used to group a set of data or content, belonging to a specific use case or user action.
+Checkbox defines the selecting or deselecting terms and consitions kind of thing where user have to select  or deselect the checkbox .
+Checkbox can be defined with single control or It can be the set of the chckboxes where user will have to select the checkboxes according to the need.
+
 
 ## Usage
 
@@ -9,33 +11,21 @@ Cards define the visual boundary which should hold the specified set of informat
 ```html
 <!-- Default -->
 <orxe-checkbox>
-  <div>
-    Here is the card content
-  </div>
 </orxe-checkbox>
 
-<!-- Floating card  -->
-<orxe-checkbox card-type="floating-card">
-  <div>
-    Here is the card content
-  </div>
+<!-- Checkbox with type provided for single checkbox -->
+<orxe-checkbox checkboxType="checkbox">
 </orxe-checkbox>
 
-<!-- Floating card with close icon  -->
-<orxe-checkbox card-type="floating-card" close-icon a11y-close-label="card closed">
-  <div>
-    Here is the card content
-  </div>
+<!-- Checkboxgroup with multiple checkboxes  -->
+<orxe-checkbox checkboxType="checkboxGroup">
 </orxe-checkbox>
 ```
 
 ## Properties
 
 | Property         | Attribute          | Description                                                        | Type      | Default        |
-| ---------------- | ------------------ | ------------------------------------------------------------------ | --------- | -------------- |
-| `cardType`       | `card-type`        | It takes two type of card either 'default-card' or 'floating-card' | `String`  | `default-card` |
+| ---------------- | ------------------ | ------------------------------------------------------------------ | --------- | -------------  |
+| `checkboxType`   | `checkbox-type`    | Its two type of checkboxes type either 'checkbox'or'checkboxGroup' | `String`  | `checkbox`     |
 | ----------       | -----------        | ------------------------------------------------------------------ | --------  | -------------- |
-| `closeIcon`      | `close-icon`       | Property will show the close icon on the `floating card`           | `Boolean` | `false`        |
-| ----------       | -----------        | ------------------------------------------------------------------ | --------  | -------------- |
-| `a11yCloseLabel` | `a11y-close-label` | Property will set the aria-label for close button                  | `String`  | -------------- |
-| `Close The Card` | -----------        | ------------------------------------------------------------------ | --------  | -------------- |
+| `errorMessage`   | `errorMessage`     | Property will show Error message                                   | `String`  | ``             |
