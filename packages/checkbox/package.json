@@ -1,5 +1,5 @@
 {
-  "name": "@orxe-components/card",
+  "name": "@orxe-components/checkbox",
   "version": "1.0.31",
   "description": "Orxe Component",
   "main": "dist/index.js",
@@ -46,7 +46,9 @@
   },
   "devDependencies": {
     "@orxe-culture/core": "^1.0.0",
-    "@orxe-devkit/sass-to-ts": "^1.0.0"
+    "@orxe-devkit/sass-to-ts": "^1.0.0",
+    "jest": "^26.4.2",
+    "jest-preset-angular": "^8.3.1"
   },
   "publishConfig": {
     "registry": "https://packages.common.cnxloyalty.com/repository/npm-hosted/"

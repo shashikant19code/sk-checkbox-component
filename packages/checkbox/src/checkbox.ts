@@ -59,14 +59,6 @@ export default class OrxeCheckbox extends TranslationClass {
   @property({ type: String })
   errorMessage = '';
 
-  /**
-   *
-   * @memberof OrxeCheckbox
-   * This property will set the aria-label for close icon
-   */
-  @property({ type: String, reflect: true, attribute: 'a11y-close-label' })
-  a11yCloseLabel = '';
-
   constructor() {
     super();
   }
@@ -109,9 +101,11 @@ export default class OrxeCheckbox extends TranslationClass {
     return html`
             <div class="checkbox-container">
             <div>
-            <label class="main"><input type="checkbox" id="${checkbox.key}" @change="${() => { this.checkUncheckBox(checkbox) }}" ?disabled=${checkbox.isDisabled} ?checked=${checkbox.isChecked}><span for="${checkbox.key}" 
-             class="checkbox ${this.getClassByState(checkbox)} ${this.getClass()}"></span><span class=
-            "checkbox-label-name">${checkbox.label}</span></label>
+            <label class="main">
+                <input type="checkbox" id="${checkbox.key}" @change="${() => { this.checkUncheckBox(checkbox) }}" ?disabled=${checkbox.isDisabled} ?checked=${checkbox.isChecked}>
+                <span for="${checkbox.key}" class="checkbox ${this.getClassByState(checkbox)} ${this.getClass()}"></span>
+                <span class="checkbox-label-name">${checkbox.label}</span>
+            </label>
             </div>
             ${this.getMetaData(checkbox)}
             </div>`

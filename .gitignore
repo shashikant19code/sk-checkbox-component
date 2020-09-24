@@ -5,3 +5,4 @@
 /node_modules
 /packages/checkbox/node_modules
 /.vs
+/packages/checkbox/coverage
