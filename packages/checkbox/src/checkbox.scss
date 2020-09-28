@@ -47,30 +47,32 @@
 .checkbox-label-name {
   text-align: justify;
   word-break: break-word;
+  margin-left: 20px;
 }
 input[type="checkbox"] {
   visibility: hidden;
 }
 
-.main input:checked ~ .checkbox {
+.checkbox.is-checked {
   background-color: var(--checkbox-background-color);
 }
 
-.main input:checked ~ .disabled {
+ .disabled {
   background-color: var(--checkbox-disabled-background-color);
   border: 1.2px solid var(--checkbox-disabled-background-color);
 }
-.checkbox:after {
+
+.checked-mark {
   content: "";
   position: absolute;
   display: none;
 }
 
-.main input:checked ~ .checkbox:after {
+.checked-mark  {
   display: block;
 }
 
-.main .checkbox:after {
+ .checked-mark{
   left: 6px;
   bottom: 4px;
   width: 4px;
